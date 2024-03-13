@@ -11,5 +11,13 @@ export default defineConfig({
       name: "OneDriveFilePickeV8",
       fileName: (format) => `onedrive-filepicker-v8-react.${format}`,
     },
+    rollupOptions: {
+      external: ["react"],
+      output: {
+        globals: {
+          react: "React",
+        },
+      },
+    },
   },
 });
