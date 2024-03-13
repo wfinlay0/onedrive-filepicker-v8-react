@@ -9,7 +9,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, "src/components/index.ts"),
       name: "OneDriveFilePickeV8",
-      fileName: (format) => `onedrive-filepicker-v8-react.${format}`,
+      fileName: `onedrive-filepicker-v8-react`,
     },
     rollupOptions: {
       external: ["react"],
