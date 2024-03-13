@@ -20,4 +20,10 @@ export default defineConfig({
       },
     },
   },
+  server: {
+    // these need to stay on because the redirect uri will be specified in the azure app registration
+    port: 3000,
+    strictPort: true,
+    open: true,
+  },
 });

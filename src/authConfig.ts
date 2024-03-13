@@ -1,7 +1,7 @@
 export const msalConfig = {
   auth: {
-    clientId: "Enter_the_Application_Id_Here",
-    authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here",
+    clientId: import.meta.env.CLIENT_ID,
+    authority: `https://login.microsoftonline.com/${import.meta.env.TENANT_ID}`,
     redirectUri: "http://localhost:3000",
   },
 };
