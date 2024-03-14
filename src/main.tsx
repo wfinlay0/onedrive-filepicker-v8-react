@@ -9,9 +9,44 @@ import {
   EventMessage,
   EventType,
   PublicClientApplication,
+  SilentRequest,
 } from "@azure/msal-browser";
+import { IAuthenticateCommand } from "./lib/@pnp/picker-api/dist/types";
+import { combine } from "@pnp/core";
 
 export const msalInstance = new PublicClientApplication(msalConfig);
+
+export async function getToken(command: IAuthenticateCommand): Promise<string> {
+  return getTokenWithScopes([`${combine(command.resource, ".default")}`]);
+}
+
+export async function getTokenWithScopes(
+  scopes: string[],
+  additionalAuthParams?: Omit<SilentRequest, "scopes">
+): Promise<string> {
+  let accessToken = "";
+  const authParams = { scopes, ...additionalAuthParams };
+
+  try {
+    // see if we have already the idtoken saved
+    const resp = await msalInstance.acquireTokenSilent(authParams!);
+    accessToken = resp.accessToken;
+  } catch (e) {
+    // per examples we fall back to popup
+    const resp = await msalInstance.loginPopup(authParams!);
+    msalInstance.setActiveAccount(resp.account);
+
+    if (resp.idToken) {
+      const resp2 = await msalInstance.acquireTokenSilent(authParams!);
+      accessToken = resp2.accessToken;
+    } else {
+      // throw the error that brought us here
+      throw e;
+    }
+  }
+
+  return accessToken;
+}
 
 msalInstance.initialize().then(() => {
   const accounts = msalInstance.getAllAccounts();
