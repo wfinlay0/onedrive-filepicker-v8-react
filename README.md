@@ -1,1 +1,1 @@
-lifted from [OneDrive/samples](https://github.com/OneDrive/samples) and packaged up
+lifted from [OneDrive/samples]([https://github.com/OneDrive/samples](https://github.com/OneDrive/samples/tree/master/samples/file-picking/typescript-react)https://github.com/OneDrive/samples/tree/master/samples/file-picking/typescript-react) and packaged up
