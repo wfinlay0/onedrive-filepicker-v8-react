@@ -3,3 +3,4 @@ React wrapper around the onedrive v8 file picker, lifted from [OneDrive/samples]
 TODO: 
 - use MsalProvider if it exists?
 - add component (or prop) to use iframe instead of popup
+- test build config 
