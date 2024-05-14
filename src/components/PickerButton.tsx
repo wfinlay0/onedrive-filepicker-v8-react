@@ -8,7 +8,7 @@ import {
   Popup,
   LamdaAuthenticate,
   IPickData,
-} from "../lib/@pnp/picker-api/dist";
+} from "../lib/@pnp/picker-api";
 
 export interface PickerProps {
   baseUrl: string;

@@ -11,7 +11,7 @@ import {
   PublicClientApplication,
   SilentRequest,
 } from "@azure/msal-browser";
-import { IAuthenticateCommand } from "./lib/@pnp/picker-api/dist/types";
+import { IAuthenticateCommand } from "./lib/@pnp/picker-api/types";
 import { combine } from "@pnp/core";
 
 export const msalInstance = new PublicClientApplication(msalConfig);
